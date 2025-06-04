@@ -2,6 +2,7 @@ package routers
 
 import (
 	"Vault/internal/controllers"
+	"Vault/internal/middleware"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
@@ -18,8 +19,14 @@ func LoadRoutes(db *gorm.DB) *gin.Engine {
 			})
 		})
 	}
+	private := router.Group("/private")
+	private.Use(middleware.AuthMiddleware())
+	{
+		private.GET("sexo", func(c *gin.Context) {
+			c.JSON(200, gin.H{
+				"message": "sexo",
+			})
+		})
+	}
 	return router
-	/*private := router.Group("/private")
-	private.Use(AuthMiddleware())*/
-
 }

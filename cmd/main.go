@@ -12,5 +12,5 @@ func main() {
 	var db = database.DbConex()
 	migrations.SetUpMigration(db)
 	router := routers.LoadRoutes(db)
-	router.Run(":8080")
+	router.Run(":8090")
 }

@@ -21,7 +21,7 @@ func RegisterUser(db *gorm.DB) gin.HandlerFunc {
 			c.JSON(500, gin.H{"error": "Failed to create user", "details": "Internal server error"})
 			return
 		}
-		c.JSON(201, gin.H{"message": "User registered successfully"})
+		c.JSON(200, gin.H{"message": "User registered successfully"})
 	}
 }
 
